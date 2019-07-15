@@ -19,22 +19,29 @@ import './store';
 
 import './style.scss';
 
-const UpgradeNudge = ( { autosaveAndRedirectToUpgrade, planName } ) => (
+const UpgradeNudge = ( { autosaveAndRedirectToUpgrade, planName, upgradeUrl } ) => (
 	<Warning
-		actions={ [
-			<Button onClick={ autosaveAndRedirectToUpgrade } target="_top" isDefault>
-				{ __( 'Upgrade', 'jetpack' ) }
-			</Button>,
-		] }
+		actions={
+			// Use upgradeUrl to determine whether or not to display the Upgrade button.
+			// We tried setting autosaveAndRedirectToUpgrade to falsey in `withDispatch`,
+			// but it doesn't seem to be reliably updated after a `withSelect` update.
+			upgradeUrl && [
+				<Button onClick={ autosaveAndRedirectToUpgrade } target="_top" isDefault>
+					{ __( 'Upgrade', 'jetpack' ) }
+				</Button>,
+			]
+		}
 		className="jetpack-upgrade-nudge"
 	>
 		<div className="jetpack-upgrade-nudge__info">
 			<Gridicon className="jetpack-upgrade-nudge__icon" icon="star" size={ 18 } />
 			<div>
 				<span className="jetpack-upgrade-nudge__title">
-					{ sprintf( __( 'This block is available under the %(planName)s Plan.', 'jetpack' ), {
-						planName,
-					} ) }
+					{ planName
+						? sprintf( __( 'This block is available under the %(planName)s Plan.', 'jetpack' ), {
+								planName,
+						  } )
+						: __( 'This block requires a paid plan.', 'jetpack' ) }
 				</span>
 				<span className="jetpack-upgrade-nudge__message">
 					{ __( 'It will be hidden from site visitors until you upgrade.', 'jetpack' ) }
@@ -60,15 +67,13 @@ export default compose( [
 		// The editor for CPTs has an `edit/` route fragment prefixed
 		const postTypeEditorRoutePrefix = [ 'page', 'post' ].includes( postType ) ? '' : 'edit';
 
-		const upgradeUrl = addQueryArgs(
-			`https://wordpress.com/checkout/${ getSiteFragment() }/${ planPathSlug }`,
-			{
+		const upgradeUrl =
+			planPathSlug &&
+			addQueryArgs( `https://wordpress.com/checkout/${ getSiteFragment() }/${ planPathSlug }`, {
 				redirect_to:
 					'/' +
 					compact( [ postTypeEditorRoutePrefix, postType, getSiteFragment(), postId ] ).join( '/' ),
-			}
-		);
-
+			} );
 		return {
 			planName: get( plan, [ 'product_name_short' ] ),
 			upgradeUrl,

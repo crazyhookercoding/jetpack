@@ -82,6 +82,7 @@
 		"@automattic/wordpress-external-dependencies-plugin": "1.0.0",
 		"@babel/core": "7.4.0",
 		"@babel/register": "7.4.4",
+		"@wordpress/block-editor": "2.2.0",
 		"@wordpress/browserslist-config": "2.5.0",
 		"@wordpress/components": "8.0.0",
 		"@wordpress/element": "2.5.0",

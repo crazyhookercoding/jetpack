@@ -1558,6 +1558,15 @@
     "@babel/runtime" "^7.4.4"
     "@wordpress/dom-ready" "^2.4.0"
 
+"@wordpress/api-fetch@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/api-fetch/-/api-fetch-3.3.0.tgz#87ae2637bce490b4023e49d4eec91cfc8dd72774"
+  integrity sha512-EddkSzj2csdDWhIZueBthue8er5akGDBAnOtUQ5d8cdOQd1RrQbAgHmpKZtNHD8qXbfS40Ay1K42w7Si0uOksw==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@wordpress/i18n" "^3.5.0"
+    "@wordpress/url" "^2.6.0"
+
 "@wordpress/autop@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@wordpress/autop/-/autop-2.3.0.tgz#764019ea743800f66b7363e9f368628a878f6a68"
@@ -1700,6 +1709,20 @@
     "@wordpress/element" "^2.5.0"
     "@wordpress/is-shallow-equal" "^1.4.0"
     lodash "^4.17.11"
+
+"@wordpress/core-data@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/core-data/-/core-data-2.4.0.tgz#8702f572654f955ea812ef2a156991f26de19768"
+  integrity sha512-c9dOmB8C1zKiqSq9aGdCJJ67h9Oo1KIzGX9/7drqOCTPgzGbEdHM3YqYP+AL65ZMr1sdeGtfo3wc7LzUQSW64Q==
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@wordpress/api-fetch" "^3.3.0"
+    "@wordpress/data" "^4.6.0"
+    "@wordpress/deprecated" "^2.4.0"
+    "@wordpress/url" "^2.6.0"
+    equivalent-key-map "^0.2.2"
+    lodash "^4.17.11"
+    rememo "^3.0.0"
 
 "@wordpress/data@^4.6.0":
   version "4.6.0"

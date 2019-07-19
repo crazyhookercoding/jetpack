@@ -19,7 +19,7 @@ import './store';
 
 import './style.scss';
 
-const UpgradeNudge = ( { autosaveAndRedirectToUpgrade, planName } ) => (
+export const UpgradeNudge = ( { autosaveAndRedirectToUpgrade, planName } ) => (
 	<Warning
 		actions={ [
 			<Button onClick={ autosaveAndRedirectToUpgrade } target="_top" isDefault>
